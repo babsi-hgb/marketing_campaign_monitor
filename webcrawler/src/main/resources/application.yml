@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.29.128/crawl_persist?verifyServerCertificate=false&useSSL=false&requireSSL=false
+    username: crawl_application
+    password: f47893hf9843t
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: webcrawler
+
+#choose random port
+server:
+  port: 8080
+
+#this application only registers
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: http://172.18.0.254:8761/eureka/
+    fetch-registry: false
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${random.int(0,99)}

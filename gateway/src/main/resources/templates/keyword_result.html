@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>MACSMO - MArketing Campaign Success MOnitor</title>
+</head>
+<body>
+    <h1>MACSMO - MArketing Campaign Success MOnitor</h1>
+    <h3 th:text="'Results for ' + ${keywordRequest.keyword}"/>
+    <hr/>
+    <!--
+    <img th:src="/analytics/api/image?keyword=${keywordRequest.keyword}&amp;w=${keywordRequest.width}&amp;h=${keywordRequest.height}" />
+    -->
+    <img th:src="@{analytics/api/image(keyword = ${keywordRequest.keyword}, w = ${keywordRequest.width}, h = ${keywordRequest.height})}"/>
+
+</body>
+</html>

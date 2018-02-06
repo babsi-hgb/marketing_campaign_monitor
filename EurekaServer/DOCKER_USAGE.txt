@@ -1,0 +1,12 @@
+sudo docker build -t eureka-server .
+
+# ausführen
+# (extern:intern)
+# jedes run kreiert einen neuen Container mit dem Image!
+sudo docker run --cpu-period=100000 --cpu-quota=50000 -d -p 8761:8761 --name EurekaServer eureka-server
+docker restart EurekaServer
+
+# nach Änderungen -> Image neu bauen
+docker rm EurekaServer
+docker rmi eureka-server
+docker build -t eureka-server .

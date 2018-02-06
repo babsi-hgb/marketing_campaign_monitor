@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Configure Tests</title>
+</head>
+<body>
+<form action="#" th:action="@{/}" th:object="${configuration}" method="post">
+    <p>Service:
+        <select th:field="*{targetService}">
+            <option th:each="svc : ${T(at.oberauer.data.TestConfiguration.TargetService).values()}"
+                    th:value="${svc}"
+                    th:text="${svc}">
+            </option>
+        </select>
+    </p>
+    <p>Multiplicity:
+        <select th:field="*{multiplicity}">
+            <option th:each="mult : ${T(at.oberauer.data.TestConfiguration.Multiplicity).values()}"
+                    th:value="${mult}"
+                    th:text="${mult}">
+            </option>
+        </select>
+    </p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

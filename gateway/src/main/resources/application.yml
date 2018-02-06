@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: gateway
+
+server:
+  port: 8080
+zuul:
+  routes:
+    echo:
+      path: /analytics/**
+      serviceId: analytics
+      stripPrefix: true
+  host:
+    maxPerRouteConnections: 100
+  max:
+    host:
+      connections: 1000
+
+analytics:
+  ribbon:
+    ConnectTimeout: 2500
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+ribbon:
+  eureka:
+    enabled: true
+
+
+hystrix:
+  command:
+    analytics:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  client:
+    serviceUrl:
+            defaultZone: http://172.18.0.254:8761/eureka/

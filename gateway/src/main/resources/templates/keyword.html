@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>MACSMO - MArketing Campaign Success MOnitor</title>
+</head>
+<body>
+    <h1>MACSMO - MArketing Campaign Success MOnitor</h1>
+    <h3>Welcome!</h3>
+    <hr/>
+    <form action="#" th:action="@{/keyword}" th:object="${keywordRequest}" method="post">
+        <p>Keyword: <input type="text" th:field="*{keyword}" /></p>
+        <p>Graphics Width: <input type="text" th:field="*{width}" /></p>
+        <p>Graphics Height: <input type="text" th:field="*{height}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
